@@ -1,6 +1,7 @@
 public class Reader {
+    // Atributos
     private String element;
-    private String converter;
+    private Converter converter;
 
     //Constructor de las clases
     public Reader(String element, Converter converter){
@@ -9,16 +10,17 @@ public class Reader {
     }
     //Metodos
     public void parseInput(){
-        Switch (element) {
-            case "LINE";
-            converter.makeLine();
+        switch (element) {
+            case "LINE":
+            converter.makeline();
             break;
-            case "PRAGRAPH";
-            converter.makepragraph();
+            case "PRAGRAPH":
+            converter.makeParagraph();
             break;
-            case "TABLE";
-            converter.makeLine();
+            case "TABLE":
+            converter.makeTable();
             break;
+
             default:
             System.out.println("opción no valida");
         }
