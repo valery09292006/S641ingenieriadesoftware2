@@ -21,19 +21,18 @@ class Personaje {
 
         // Modificador de daño según el arma
         if (arma.equalsIgnoreCase("espada")) {
-            daño += 5; // La espada da un poco más de daño
+            daño = Math.min(daño + 2, MAX_DANO); // Espada: puede llegar al máximo del rango
         } else if (arma.equalsIgnoreCase("arco")) {
-            daño -= 3; // El arco hace un poco menos
-            if (daño < 1) daño = 1;
+            daño = Math.max(daño - 2, MIN_DANO); // Arco: más estable, pero sin pasarse del mínimo
         }
 
-        oponente.recibirDano(daño);
+        oponente.recibirDaño(daño);
         System.out.println(this.nombre + " ataca con su " + arma + " a " + oponente.getNombre()
                 + " causando " + daño + " puntos de daño.");
     }
 
     // Método para recibir daño
-    public void recibirDano(int daño) {
+    public void recibirDaño(int daño) {
         this.puntosDeVida -= daño;
         if (this.puntosDeVida < 0) {
             this.puntosDeVida = 0; // No se puede tener menos de 0 puntos de vida
